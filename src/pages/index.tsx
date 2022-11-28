@@ -1,7 +1,14 @@
+import { Layout } from "../components/template/Layout";
+
 export default function Home() {
   return (
     <div>
-      <h1 className="text-3xl text-red-700">Hello, Template</h1>
+      <Layout
+        title="Página inicial"
+        subtitle="Iniciando a construção do template admin"
+      >
+        <h2>Conteúdo</h2>
+      </Layout>
     </div>
   );
 }
