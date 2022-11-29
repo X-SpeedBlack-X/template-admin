@@ -1,3 +1,4 @@
+import useAppData from "../../data/hook/useAppData";
 import { Content } from "./Content";
 import { Heading } from "./Heading";
 import { Sidebar } from "./Sidebar";
@@ -9,8 +10,9 @@ type LayoutProps = {
 };
 
 export function Layout(props: LayoutProps) {
+  const { theme, changeTheme } = useAppData();
   return (
-    <div className="flex h-screen w-screen dark">
+    <div className={`${theme} flex h-screen w-screen`}>
       <Sidebar />
       <div className="flex flex-col w-full p-7 bg-gray-300 dark:bg-slate-800">
         <Heading title={props.title} subtitle={props.subtitle} />
