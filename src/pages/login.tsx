@@ -4,18 +4,22 @@ import { WarningIcon } from "../components/icons";
 import useAuth from "../data/hook/useAuth";
 
 export default function Login() {
-  const { user, loginGoogle } = useAuth();
+  const { signUp, login, loginGoogle } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [sign, setSign] = useState<"signIn" | "signUp">("signIn");
   const [error, setError] = useState(null);
 
-  function submit() {
-    if (sign === "signIn") {
-      console.log("login");
-    } else {
-      console.log("cadastra");
+  async function submit() {
+    try {
+      if (sign === "signIn") {
+        await login(email, password);
+      } else {
+        await signUp(email, password);
+      }
+    } catch (error) {
+      showError(error?.message ?? "Ocorreu um erro!");
     }
   }
 
